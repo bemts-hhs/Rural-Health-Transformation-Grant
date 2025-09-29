@@ -390,9 +390,10 @@ calc_age_adjusted_rate <- function(
     dplyr::mutate(
       crude_rate = ({{ count }} / {{ local_population }}) * rate,
       weighted_rate = crude_rate * {{ standard_population_weight }},
-      var_component = (({{ count }}) / ({{ local_population }}^2)) *
-        ({{ standard_population_weight }}^2) *
-        (rate^2)
+      var_component = {{ count }} /
+        (({{ local_population }}^2) *
+          ({{ standard_population_weight }}^2) *
+          (rate^2))
     )
 
   # Step 2: Aggregate
