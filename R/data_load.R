@@ -21,6 +21,7 @@ trauma_data_path_2024 <- Sys.getenv("trauma_data_2024")
 
 # ems environment variables ----
 ems_data_path <- Sys.getenv("ems_data_folder")
+ems_patient_path <- Sys.getenv("ems_patient_folder_2024")
 
 # ipop inpatient environment variables ----
 ipop_ip_data_path_2020 <- Sys.getenv("ipop_ip_data_2020")
@@ -259,6 +260,7 @@ dplyr::glimpse(trauma_2024)
 
 ### ems data ----
 ems_data <- readr::read_csv(file = ems_data_path)
+ems_patient <- readr::read_csv(file = ems_patient_path)
 
 # deal with missing injury categories
 ems_data_clean <- ems_data |>
